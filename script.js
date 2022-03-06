@@ -1,19 +1,35 @@
 const cartaTexto = document.getElementById('carta-texto');
 const criarCarta = document.getElementById('criar-carta');
 const cartaGerada = document.getElementById('carta-gerada');
-const randomClass = [];
+// const coutWords = document.getElementById('carta-contador');
 
-function 
+const groupStyle = ['newspaper', 'magazine1', 'magazine2'];
+const groupSize = ['medium', 'big', 'reallybig'];
+const groupRotate = ['rotateleft', 'rotateright'];
+const groupSkew = ['skewleft', 'skewright'];
 
-function generatorLetter() {
-  const addText = cartaTexto.value;
+function randomClass() {
+  const styleIndex = Math.floor(Math.random() * groupStyle.length);
+  const arrStyle = groupStyle[styleIndex];
+  const sizeIndex = Math.floor(Math.random() * groupSize.length);
+  const arrSiza = groupSize[sizeIndex];
+  const rotateIndex = Math.floor(Math.random() * groupRotate.length);
+  const arrRotate = groupRotate[rotateIndex];
+  const skewIndex = Math.floor(Math.random() * groupSkew.length);
+  const arrSkew = groupSkew[skewIndex];
+  return `${arrStyle} ${arrSiza} ${arrRotate} ${arrSkew}`;
+}
+console.log(randomClass());
+
+function createLetter() {
   const createSpan = document.createElement('span');
-  createSpan.innerText = addText;
+  createSpan.className = randomClass();
+  createSpan.innerText = cartaTexto.value;
   cartaGerada.appendChild(createSpan);
 
-  if (cartaTexto.value === ' ') {
-    createSpan.innerText = 'Por favor, digite o conteúdo da carta.';
-  }
+  // if (cartaTexto.innerText = ' ') {
+  //   cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
+  // }
 }
 
-criarCarta.addEventListener('click', generatorLetter);
+criarCarta.addEventListener('click', createLetter);
