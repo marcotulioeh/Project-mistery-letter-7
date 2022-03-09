@@ -48,6 +48,6 @@ criarCarta.addEventListener('click', () => {
 });
 
 cartaGerada.addEventListener('click', (event) => {
-  const element = event.target;
-  element.className = randomClass();
+  const elementClass = event.target;
+  elementClass.className = randomClass();
 });
