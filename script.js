@@ -47,7 +47,7 @@ criarCarta.addEventListener('click', () => {
   }
 });
 
-cartaGerada.addEventListener('click', () => {
-  const span = document.querySelector('span');
-  span.className = randomClass();
+cartaGerada.addEventListener('click', (event) => {
+  const element = event.target;
+  element.className = randomClass();
 });
