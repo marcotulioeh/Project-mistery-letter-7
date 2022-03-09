@@ -32,4 +32,10 @@ function createLetter() {
   // }
 }
 
-criarCarta.addEventListener('click', createLetter);
+criarCarta.addEventListener('click', () => {
+  if (cartaTexto.value === '' || cartaTexto.value === ' ') {
+    cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
+  } else {
+    return createLetter();
+  }
+});
