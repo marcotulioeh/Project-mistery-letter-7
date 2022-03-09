@@ -1,7 +1,7 @@
 const cartaTexto = document.getElementById('carta-texto');
 const criarCarta = document.getElementById('criar-carta');
 const cartaGerada = document.getElementById('carta-gerada');
-// const coutWords = document.getElementById('carta-contador');
+// const cartaContador = document.getElementById('carta-contador');
 
 const groupStyle = ['newspaper', 'magazine1', 'magazine2'];
 const groupSize = ['medium', 'big', 'reallybig'];
@@ -22,14 +22,13 @@ function randomClass() {
 console.log(randomClass());
 
 function createLetter() {
-  const createSpan = document.createElement('span');
-  createSpan.className = randomClass();
-  createSpan.innerText = cartaTexto.value;
-  cartaGerada.appendChild(createSpan);
-
-  // if (cartaTexto.innerText = ' ') {
-  //   cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
-  // }
+  const textWrapping = document.getElementById('carta-texto').value.split(' ');
+  for (let i = 0; i < textWrapping.length; i += 1) {
+    const createSpan = document.createElement('span');
+    createSpan.className = randomClass();
+    createSpan.innerText = `${textWrapping[i]}`;
+    cartaGerada.appendChild(createSpan);
+  }
 }
 
 criarCarta.addEventListener('click', () => {
@@ -38,4 +37,9 @@ criarCarta.addEventListener('click', () => {
   } else {
     return createLetter();
   }
+});
+
+cartaGerada.addEventListener('click', () => {
+  const span = document.querySelector('span');
+  span.className = randomClass();
 });
