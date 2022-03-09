@@ -2,7 +2,6 @@ const cartaTexto = document.getElementById('carta-texto');
 const criarCarta = document.getElementById('criar-carta');
 const cartaGerada = document.getElementById('carta-gerada');
 const cartaContador = document.getElementById('carta-contador');
-const counter = document.getElementById('counter');
 
 const groupStyle = ['newspaper', 'magazine1', 'magazine2'];
 const groupSize = ['medium', 'big', 'reallybig'];
@@ -22,6 +21,11 @@ function randomClass() {
 }
 console.log(randomClass());
 
+function contadorDePalavras(arr) {
+  const contador = arr.length;
+  cartaContador.innerText = contador;
+}
+
 function createLetter() {
   cartaGerada.innerHTML = '';
   const textWrapping = document.getElementById('carta-texto').value.split(' ');
@@ -32,6 +36,7 @@ function createLetter() {
     createSpan.innerText = element;
     cartaGerada.appendChild(createSpan);
   });
+  contadorDePalavras(textWrapping);
 }
 
 criarCarta.addEventListener('click', () => {
@@ -46,12 +51,3 @@ cartaGerada.addEventListener('click', () => {
   const span = document.querySelector('span');
   span.className = randomClass();
 });
-
-function countWords() {
-  if (cartaTexto.value !== '') {
-    cartaContador.innerText = cartaTexto.value.split(' ').length;
-  } else {
-    cartaContador.innerText = '0';
-  }
-}
-
